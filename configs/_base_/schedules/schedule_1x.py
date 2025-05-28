@@ -17,9 +17,19 @@ param_scheduler = [
 ]
 
 # optimizer
+# optim_wrapper = dict(
+#     type='OptimWrapper',
+#     optimizer=dict(type='SGD', lr=0.02, momentum=0.9, weight_decay=0.0001))
+
 optim_wrapper = dict(
     type='OptimWrapper',
-    optimizer=dict(type='SGD', lr=0.02, momentum=0.9, weight_decay=0.0001))
+    optimizer=dict(
+        type='Adam',  # 改为 Adam
+        lr=0.02,     # 学习率
+        betas=(0.9, 0.999),  # Adam 默认的 beta1 和 beta2（可选，不写则默认 (0.9, 0.999)）
+        weight_decay=0.0001  # 权重衰减
+    )
+)
 
 # Default setting for scaling LR automatically
 #   - `enable` means enable scaling LR automatically
